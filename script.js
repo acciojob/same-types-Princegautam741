@@ -13,8 +13,8 @@ let value1 = prompt("Enter Value 1:");
 let value2 = prompt("Enter Value 2:");
 
 // Convert the input values to numbers
-value1 = parseFloat(value1);
-value2 = parseFloat(value2);
+value1 = Number(value1);
+value2 = Number(value2);
 
 // Check if the values are of the same type or both are NaN
 alert(isSameType(value1, value2));
