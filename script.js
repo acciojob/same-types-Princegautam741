@@ -1,4 +1,3 @@
-// isSameType function
 function isSameType(value1, value2) {
     // Check if both values are NaN
     if (isNaN(value1) && isNaN(value2)) {
@@ -9,61 +8,13 @@ function isSameType(value1, value2) {
     return typeof value1 === typeof value2;
 }
 
-// Cypress tests
-describe("isSameType function", () => {
-    it("returns true if the values are of the same type", () => {
-        const value1 = "hello";
-        const value2 = "world";
-        cy.visit(baseUrl, {
-            onBeforeLoad(win) {
-                // Stub your functions here
-                cy.stub(win, "prompt").onFirstCall().returns(value1).onSecondCall().returns(value2);
-            }
-        });
-        cy.on("window:alert", str => {
-            expect(str.toString()).to.equals("true");
-        });
-    });
+// do not change the code below.
+let value1 = prompt("Enter Value 1:");
+let value2 = prompt("Enter Value 2:");
 
-    it("returns false if the values are not of the same type", () => {
-        const value1 = "hello";
-        const value2 = 123;
-        cy.visit(baseUrl, {
-            onBeforeLoad(win) {
-                // Stub your functions here
-                cy.stub(win, "prompt").onFirstCall().returns(value1).onSecondCall().returns(value2);
-            }
-        });
-        cy.on("window:alert", str => {
-            expect(str.toString()).to.equals("false");
-        });
-    });
+// Convert the input values to numbers
+value1 = Number(value1);
+value2 = Number(value2);
 
-    it("returns true if both values are NaN", () => {
-        const value1 = NaN;
-        const value2 = NaN;
-        cy.visit(baseUrl, {
-            onBeforeLoad(win) {
-                // Stub your functions here
-                cy.stub(win, "prompt").onFirstCall().returns(value1).onSecondCall().returns(value2);
-            }
-        });
-        cy.on("window:alert", str => {
-            expect(str.toString()).to.equals("true");
-        });
-    });
-
-    it("returns false if only one value is NaN", () => {
-        const value1 = NaN;
-        const value2 = 123;
-        cy.visit(baseUrl, {
-            onBeforeLoad(win) {
-                // Stub your functions here
-                cy.stub(win, "prompt").onFirstCall().returns(value1).onSecondCall().returns(value2);
-            }
-        });
-        cy.on("window:alert", str => {
-            expect(str.toString()).to.equals("false");
-        });
-    });
-});
+// Check if the values are of the same type or both are NaN
+alert(isSameType(value1, value2));
